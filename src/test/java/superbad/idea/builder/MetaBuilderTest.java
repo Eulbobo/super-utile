@@ -18,7 +18,7 @@ public class MetaBuilderTest {
     @Test
     public void should_set_property_on_private_field(){
 
-       MyLocalClass loc = getBuilder(new MyLocalClass()).setProperty("value", "MesCouilles").build();
+       MyLocalClass loc = getBuilder(new MyLocalClass()).set("value", "MesCouilles").build();
 
        assertThat(loc).isNotNull();
        assertThat(loc.getValue()).isNotNull().isEqualTo("MesCouilles");
@@ -28,9 +28,9 @@ public class MetaBuilderTest {
     public void should_set_last_property_on_private_field() throws ReflectiveOperationException{
 
        MyLocalClass loc = getBuilder(MyLocalClass.class)
-                   .setProperty("value", "MesCouilles")
-                   .setProperty("value", "Mickey")
-                   .setProperty("asterix", "vide")
+                   .set("value", "MesCouilles")
+                   .set("value", "Mickey")
+                   .set("asterix", "vide")
                    .build();
 
        assertThat(loc).isNotNull();

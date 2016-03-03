@@ -5,7 +5,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class MetaBuilder<T> {
 
@@ -41,7 +40,7 @@ public class MetaBuilder<T> {
         this.beanToBuild = bean;
     }
 
-    public MetaBuilder<T> setProperty(String propertyName, Object property) {
+    public MetaBuilder<T> set(String propertyName, Object property) {
         mapSet.put(propertyName, property);
         return this;
     }
@@ -58,9 +57,9 @@ public class MetaBuilder<T> {
     }
 
     public T build() {
-        for (Entry<String, Object> entry : mapSet.entrySet()) {
-            setFieldProperty(entry.getKey(), entry.getValue());
-        }
+        mapSet.entrySet()
+            .stream()
+            .forEach(entry -> setFieldProperty(entry.getKey(), entry.getValue()));
         return beanToBuild;
     }
 
