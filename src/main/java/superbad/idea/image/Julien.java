@@ -7,9 +7,9 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -25,7 +25,7 @@ public class Julien {
     private List<String> lines;
 
     public Julien(String message) {
-        this.lines = StringSplit.splitString(message, 20);
+        this.lines = StringSplit.splitString(message, 22);
         if (lines.size() <= 2){
             lines.add(0, BASE_LINE);
         }
@@ -44,11 +44,11 @@ public class Julien {
             g.setColor(Color.BLACK);
             int y = BASE_Y;
             for (String line : lines){
-                g.drawString(line, 290, y);// ligne de 18 caractères
+                g.drawString(line, 290, y);
                 y+=BASE_Y_INCREMENT;
             }
             g.dispose();
-            ImageIO.write(image, "png", new File("c:\\test.png"));
+            ImageIO.write(image, "png", Paths.get("C:", "/", "JulienDit.png").toFile());
         }
     }
 
@@ -57,6 +57,6 @@ public class Julien {
     }
 
     public static void main(String[] args) throws Exception {
-        Julien.dit("C'est quand même pas mal SVN");
+        Julien.dit("Les idées de jeu, j'y pense quand je dors");
     }
 }
