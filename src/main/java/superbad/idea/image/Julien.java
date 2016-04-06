@@ -26,7 +26,7 @@ public class Julien {
 
     public Julien(String message) {
         this.lines = StringSplit.splitString(message, 20);
-        if (lines.size() == 1){
+        if (lines.size() <= 2){
             lines.add(0, BASE_LINE);
         }
     }
@@ -57,6 +57,6 @@ public class Julien {
     }
 
     public static void main(String[] args) throws Exception {
-        Julien.dit(args[0]);
+        Julien.dit("C'est quand même pas mal SVN");
     }
 }

@@ -10,12 +10,18 @@ public class StringSplit {
 
         StringBuilder sb = new StringBuilder();
         List<String> resultlist = new ArrayList<>();
+        boolean addLastChunk = true;
         for (String str : splits){
             sb.append(str);
+            addLastChunk = true;
             if (sb.length() >= splitLenght){
                 resultlist.add(sb.toString().trim());
-                sb.delete(0, sb.length());
+                sb = new StringBuilder();
+                addLastChunk = false;
             }
+        }
+        if (addLastChunk){
+            resultlist.add(sb.toString().trim());
         }
         return resultlist;
     }
