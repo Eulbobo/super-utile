@@ -25,7 +25,7 @@ public class Julien {
     private List<String> lines;
 
     public Julien(String message) {
-        this.lines = StringSplit.splitString(message, 22);
+        this.lines = StringSplit.splitString(message, 20);
         if (lines.size() <= 2){
             lines.add(0, BASE_LINE);
         }
