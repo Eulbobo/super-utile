@@ -31,10 +31,11 @@ public class Julien {
         }
     }
 
-    public void writeImage() throws IOException {
+    public BufferedImage writeImage() throws IOException {
+        BufferedImage image = null;
         try (InputStream is = getClass().getClassLoader()
                 .getResourceAsStream("ModeleJulienADit.png")) {
-            BufferedImage image = ImageIO.read(is);
+            image = ImageIO.read(is);
             Graphics2D g = (Graphics2D) image.getGraphics();
 
             RenderingHints rh = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -48,12 +49,12 @@ public class Julien {
                 y+=BASE_Y_INCREMENT;
             }
             g.dispose();
-            ImageIO.write(image, "png", Paths.get("C:", "/", "JulienDit.png").toFile());
         }
+        return image;
     }
 
     public static void dit(String message) throws IOException {
-        new Julien(message).writeImage();
+        ImageIO.write(new Julien(message).writeImage(), "png", Paths.get("C:", "/", "JulienDit.png").toFile()); ;
     }
 
     public static void main(String[] args) throws Exception {
