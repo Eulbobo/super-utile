@@ -5,6 +5,16 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
     
+     <filter>
+        <filter-name>logFilter</filter-name>
+        <filter-class>superbad.idea.filter.LogFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>logFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
     <servlet>
         <servlet-name>JulienDit</servlet-name>
         <servlet-class>superbad.idea.servlet.JulienDitServlet</servlet-class>
@@ -14,4 +24,5 @@
         <servlet-name>JulienDit</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
 </web-app>
